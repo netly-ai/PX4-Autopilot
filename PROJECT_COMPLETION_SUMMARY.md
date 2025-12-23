@@ -57,10 +57,10 @@ Successfully created, tested, and committed two new PX4 SITL airframe configurat
 
 ## Git Commit Details
 
-**Branch:** `dev-mini-4-pro-sim`  
-**Commit Hash:** `b6b707f4d0fc5c7441cc4c6479535777d1c7e8f8`  
-**Author:** trr <trr@example.com>  
-**Date:** Tue Dec 23 03:46:04 2025 -0800  
+**Branch:** `dev-mini-4-pro-sim`
+**Commit Hash:** `b6b707f4d0fc5c7441cc4c6479535777d1c7e8f8`
+**Author:** trr <trr@example.com>
+**Date:** Tue Dec 23 03:46:04 2025 -0800
 
 **Commit Message:**
 ```

@@ -1,7 +1,7 @@
 # PX4 SITL Mini Quadrotor (DJI Mini 4 Pro Sized) - Summary of Changes
 
-**Date:** December 23, 2025  
-**Branch:** dev-mini-4-pro-sim  
+**Date:** December 23, 2025
+**Branch:** dev-mini-4-pro-sim
 **Objective:** Add compact multirotor airframe definitions for PX4 SITL simulation matching DJI Mini 4 Pro specifications
 
 ## Overview
