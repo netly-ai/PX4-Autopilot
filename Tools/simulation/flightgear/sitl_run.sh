@@ -34,6 +34,16 @@ if [ -f "${src_path}/Tools/simulation/flightgear/models/${model}.json" ]; then
 	   "${src_path}/Tools/simulation/flightgear/flightgear_bridge/models/${model}.json"
 fi
 
+# If a folder with model files exists in parent models directory, copy it into
+# the flightgear_bridge models directory so FG_run.py can find the aircraft
+# assets without modifying the submodule.
+if [ -d "${src_path}/Tools/simulation/flightgear/models/${model}" ]; then
+	echo "Found parent-level FlightGear model folder: copying into bridge/models/${model}/"
+	rm -rf "${src_path}/Tools/simulation/flightgear/flightgear_bridge/models/${model}"
+	cp -r "${src_path}/Tools/simulation/flightgear/models/${model}" \
+	   "${src_path}/Tools/simulation/flightgear/flightgear_bridge/models/${model}"
+fi
+
 cd "${src_path}/Tools/simulation/flightgear/flightgear_bridge/"
 ./FG_run.py models/${model}.json 0
 "${build_path}/build_flightgear_bridge/flightgear_bridge" 0 `./get_FGbridge_params.py "models/"${model}".json"` &
