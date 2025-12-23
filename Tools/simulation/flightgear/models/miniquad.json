@@ -9,6 +9,3 @@
     ]
 }
 
-# Template: put your FlightGear multirotor model files under
-# Tools/simulation/flightgear/flightgear_bridge/models/MiniQuad/ and set
-# a valid "Url" if you want the bridge to auto-download it.
