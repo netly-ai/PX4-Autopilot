@@ -1,0 +1,45 @@
+#!/bin/sh
+#
+# @name Mini Quadrotor SITL FlightGear (DJI Mini 4 Pro sized)
+#
+# @type Quadrotor X
+#
+# @maintainer PX4 Development Team
+#
+# FlightGear-specific airframe mapping. This file provides parameter defaults
+# for a compact quadrotor when running PX4 with FlightGear as the visual
+# simulator. To get a real visual representation, add a FlightGear aircraft
+# model under Tools/simulation/flightgear/flightgear_bridge/models/MiniQuad/
+# and a corresponding `miniquad.json` entry.
+#
+
+. ${R}etc/init.d/rc.mc_defaults
+
+param set-default CA_AIRFRAME 0
+
+param set-default CA_ROTOR_COUNT 4
+
+# Mini quadrotor frame with ~122.5mm arm length (245mm wheelbase / 2)
+# X configuration
+param set-default CA_ROTOR0_PX 0.0865
+param set-default CA_ROTOR0_PY 0.0865
+param set-default CA_ROTOR0_KM 0.05
+
+param set-default CA_ROTOR1_PX -0.0865
+param set-default CA_ROTOR1_PY -0.0865
+param set-default CA_ROTOR1_KM 0.05
+
+param set-default CA_ROTOR2_PX 0.0865
+param set-default CA_ROTOR2_PY -0.0865
+param set-default CA_ROTOR2_KM -0.05
+
+param set-default CA_ROTOR3_PX -0.0865
+param set-default CA_ROTOR3_PY 0.0865
+param set-default CA_ROTOR3_KM -0.05
+
+param set-default PWM_MAIN_FUNC1 101
+param set-default PWM_MAIN_FUNC2 102
+param set-default PWM_MAIN_FUNC3 103
+param set-default PWM_MAIN_FUNC4 104
+
+# If you need to tune default gains for the mini quad, add them here.

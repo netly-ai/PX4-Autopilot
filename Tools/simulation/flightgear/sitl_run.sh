@@ -25,6 +25,15 @@ mkdir -p "$rootfs"
 export PX4_SIM_MODEL=flightgear_${model}
 
 echo "FG setup"
+# If a model JSON exists in the parent flightgear/models directory (outside
+# the submodule), copy it into the flightgear_bridge models directory so the
+# bridge can pick it up. This avoids modifying the submodule directly.
+if [ -f "${src_path}/Tools/simulation/flightgear/models/${model}.json" ]; then
+	echo "Found parent-level FlightGear model JSON: copying into bridge/models/"
+	cp "${src_path}/Tools/simulation/flightgear/models/${model}.json" \
+	   "${src_path}/Tools/simulation/flightgear/flightgear_bridge/models/${model}.json"
+fi
+
 cd "${src_path}/Tools/simulation/flightgear/flightgear_bridge/"
 ./FG_run.py models/${model}.json 0
 "${build_path}/build_flightgear_bridge/flightgear_bridge" 0 `./get_FGbridge_params.py "models/"${model}".json"` &
