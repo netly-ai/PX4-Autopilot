@@ -42,6 +42,21 @@ if [ -d "${src_path}/Tools/simulation/flightgear/models/${model}" ]; then
 	rm -rf "${src_path}/Tools/simulation/flightgear/flightgear_bridge/models/${model}"
 	cp -r "${src_path}/Tools/simulation/flightgear/models/${model}" \
 	   "${src_path}/Tools/simulation/flightgear/flightgear_bridge/models/${model}"
+
+	# If the copied folder contains a nested aircraft directory (common layout
+	# is models/<model>/aircraft/<AircraftName>/...), copy that nested aircraft
+	# up into the bridge models root so fgfs (with --fg-aircraft=./models) can
+	# find it directly under ./models/<AircraftName>.
+	model_json="${src_path}/Tools/simulation/flightgear/models/${model}.json"
+	if [ -f "$model_json" ]; then
+		AIR_NAME=$(awk -F '"' '/"FgModel"/{print $4; exit}' "$model_json" || true)
+		if [ -n "$AIR_NAME" ] && [ -d "${src_path}/Tools/simulation/flightgear/flightgear_bridge/models/${model}/aircraft/${AIR_NAME}" ]; then
+			echo "Found nested aircraft '${AIR_NAME}'; copying to bridge/models/${AIR_NAME}/"
+			rm -rf "${src_path}/Tools/simulation/flightgear/flightgear_bridge/models/${AIR_NAME}"
+			cp -r "${src_path}/Tools/simulation/flightgear/flightgear_bridge/models/${model}/aircraft/${AIR_NAME}" \
+			   "${src_path}/Tools/simulation/flightgear/flightgear_bridge/models/${AIR_NAME}"
+		fi
+	fi
 fi
 
 cd "${src_path}/Tools/simulation/flightgear/flightgear_bridge/"
