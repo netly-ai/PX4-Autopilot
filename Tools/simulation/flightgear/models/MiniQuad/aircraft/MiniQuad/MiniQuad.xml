@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!-- Minimal FlightGear aircraft descriptor for a placeholder MiniQuad -->
+<Aircraft>
+  <Name>MiniQuad</Name>
+  <ShortName>MiniQuad</ShortName>
+  <Manufacturer>PX4 Team</Manufacturer>
+  <Description>Minimal placeholder multirotor for SITL visualization</Description>
+
+  <Model>
+    <!-- Path is relative to the aircraft directory -->
+    <File>models/MiniQuad.obj</File>
+  </Model>
+
+  <Properties />
+</Aircraft>
+
+<!-- Note:
+  This is a minimal placeholder file intended to let FlightGear load a simple
+  geometry for basic visualization and testing of the PX4 FlightGear bridge.
+  A production-quality aircraft requires proper FlightGear XML attributes,
+  flight dynamics (JSBSim/YASim), control mapping, and textures.
+-->
