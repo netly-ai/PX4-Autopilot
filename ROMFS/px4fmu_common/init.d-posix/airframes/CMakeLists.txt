@@ -102,6 +102,7 @@ px4_add_romfs_files(
 	10020_gazebo-classic_mini_quadrotor
 	10021_jmavsim_mini_quadrotor
 	10022_flightgear_mini_quadrotor
+	10022_flightgear_miniquad
 	10030_gazebo-classic_px4vision
 
 	10040_sihsim_quadx
